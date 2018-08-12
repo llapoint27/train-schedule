@@ -43,9 +43,7 @@ $(document).ready(function () {
     $("#firstTrain").val("");
     $("#frequency").val("");
 
-
   });
-
 
   database.ref().on("child_added", function (childSnapshot, key) {
 
@@ -62,7 +60,6 @@ $(document).ready(function () {
 
     //difference in time
     var difference = moment().diff(moment(firstCovertedTime), "minutes");
-    
 
     //find the remainder (time apart)
     var timeRemainder = difference % FBfreq;
@@ -74,16 +71,11 @@ $(document).ready(function () {
     var next = moment().add(minutes, "minutes");
     var nextTrainTime = moment(next).format("HH:mm");
 
-    // console.log(firstCovertedTime);
-    // console.log(minutes);
-    // console.log(nextTrainTime);
-
     //append the next Train's info into table
-
     $("#trainInfo > tbody").append("<tr><th>" + FBname + "</th><th>" + FBdestination + "</th><th>" + FBfreq + "</th><th>" + nextTrainTime + "</th><th>" + minutes + "</th>");
 
-  }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    });
+  }, function (errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
 
 });
