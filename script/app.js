@@ -25,14 +25,8 @@ $(document).ready(function () {
     var firstTrain = $("#firstTrain").val().trim();
     var frequency = $("#frequency").val().trim();
 
-    //making sure variables are logging correct inputs in console
-    // console.log(trainName);
-    // console.log(destintaion);
-    // console.log(firstTrain);
-    // console.log(frequency);
 
     //variable to push object into firebase
-
     var newTrainInfo = {
       name: trainName,
       destination: destination,
@@ -50,41 +44,46 @@ $(document).ready(function () {
     $("#frequency").val("");
 
 
-
   });
 
 
   database.ref().on("child_added", function (childSnapshot, key) {
-
-    console.log(childSnapshot.val());
 
     var FBname = childSnapshot.val().name;
     var FBdestination = childSnapshot.val().destination;
     var FBtrain = childSnapshot.val().firstTrain;
     var FBfreq = childSnapshot.val().frequency;
 
-    console.log(FBname);
-    console.log(FBdestination);
-    console.log(FBtrain);
-    console.log(FBfreq);
+    //converts first tmime
+    var firstCovertedTime = moment(FBtrain, "HH:mm").subtract(1, "years");
 
+    var currentTime = moment();
+    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    //difference in time
+    var difference = moment().diff(moment(firstCovertedTime), "minutes");
     
 
-    var calculateTime = moment().diff(moment.unix(FBtrain), "minutes");
-    var timeRemainder = moment().diff(moment.unix(FBtrain), "minutes") % FBfreq;
+    //find the remainder (time apart)
+    var timeRemainder = difference % FBfreq;
+
+    //minutes until the train arrives
     var minutes = FBfreq - timeRemainder;
 
-    var nextTrainArrival = moment().add(minutes, "m").format("hh:mm A");
+    //next train variables
+    var next = moment().add(minutes, "minutes");
+    var nextTrainTime = moment(next).format("HH:mm");
 
-    // console.log(calculateTime);
+    // console.log(firstCovertedTime);
     // console.log(minutes);
-    // console.log(nextTrainArrival);
+    // console.log(nextTrainTime);
 
+    //append the next Train's info into table
 
-  });
+    $("#trainInfo > tbody").append("<tr><th>" + FBname + "</th><th>" + FBdestination + "</th><th>" + FBfreq + "</th><th>" + nextTrainTime + "</th><th>" + minutes + "</th>");
 
-
-
-
+  }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
 
 });
