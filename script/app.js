@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     //storing user input into variables
     var trainName = $("#trainName").val().trim();
-    var destintaion = $("#destination").val().trim();
+    var destination = $("#destination").val().trim();
     var firstTrain = $("#firstTrain").val().trim();
     var frequency = $("#frequency").val().trim();
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
     //clear the input fields
     $("#trainName").val("");
-    $("destination").val("");
+    $("#destination").val("");
     $("#firstTrain").val("");
     $("#frequency").val("");
 
@@ -68,15 +68,17 @@ $(document).ready(function () {
     console.log(FBtrain);
     console.log(FBfreq);
 
+    
+
     var calculateTime = moment().diff(moment.unix(FBtrain), "minutes");
     var timeRemainder = moment().diff(moment.unix(FBtrain), "minutes") % FBfreq;
     var minutes = FBfreq - timeRemainder;
 
     var nextTrainArrival = moment().add(minutes, "m").format("hh:mm A");
 
-    console.log(calculateTime);
-    console.log(minutes);
-    console.log(nextTrainArrival);
+    // console.log(calculateTime);
+    // console.log(minutes);
+    // console.log(nextTrainArrival);
 
 
   });
