@@ -1,31 +1,34 @@
 .jumbotron {
     background: url("../pexels-photo-242133.jpeg");
-    height: 200px;
+    height: 250px;
     font-weight: bold;
-    font-family: 'Titan One', cursive;
+    font-family: 'Roboto', sans-serif;
+    opacity: 5px;
 }
 
 .text-center {
-    margin: -45px;
+    margin: -50px;
     color: #383838;
-    font-size: 65px;
+    font-size: 70px;
+    font-weight: bold;
 }
 
 .panel-title {
-    font-family: 'Titan One', cursive;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
     color: #383838;
+    font-size: 22px;
 }
 
 #addTrain {
-    font-family: 'Titan One', cursive;
+    font-family: 'Roboto', sans-serif;
     color: #383838;
+    font-size: 22px;
 }
 
 .row {
-    width: 100%;
+width: 100%;
+
 }
 
-.form-group {
-    width: 100%;
-}
 

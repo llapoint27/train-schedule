@@ -13,7 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--Firebase link-->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
     <!--CSS link-->
     <link rel="stylesheet" href="./css/style.css">
     <!--JS file link-->
@@ -21,48 +20,49 @@
     <!--Moment js Library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates|Titan+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 
 </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron border" style="width: 100%" id="currentTime">
+        <div class="jumbotron jumbotron-fluid header" id="currentTime">
             <h1 class="text-center">Catch Your Train!</h1>
             <!-- <h3 class="text-center">ya better run fast.</h3> -->
         </div>
 
+
         <div class="row">
+      
+                <div class="col-xs-12 col-sm-4 border border-secondary p-2">
 
-            <div class="col-xs-12 col-sm-3 border border-secondary p-2">
+                    <div class="form-group">
+                        <h3 id="addTrain">Add Train</h3>
+                        <label for="">Train Name</label>
+                        <input type="text" class="form-control" id="trainName">
+                    </div>
 
-                <div class="form-group">
-                    <h3 id="addTrain">Add Train</h3>
-                    <label for="">Train Name</label>
-                    <input type="text" class="form-control" id="trainName">
+                    <div class="form-group">
+                        <label for="">Destination</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Buffalo, NY">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Frist Train Time (HH:mm - military)</label>
+                        <input type="text" class="form-control" id="firstTrain" placeholder="i.e. 22:00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Frequency (min)</label>
+                        <input type="text" class="form-control" id="frequency" placeholder="30">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="addButton">Submit</button>
                 </div>
+      
 
-                <div class="form-group">
-                    <label for="">Destination</label>
-                    <input type="text" class="form-control" id="destination" placeholder="Buffalo, NY">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Frist Train Time (HH:mm - military time)</label>
-                    <input type="text" class="form-control" id="firstTrain" placeholder="i.e. 22:00">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Frequency (min)</label>
-                    <input type="text" class="form-control" id="frequency" placeholder="30">
-                </div>
-
-                <button type="submit" class="btn btn-primary" id="addButton">Submit</button>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-9 border border-secondary p-2">
+            <div class="col-xs-12 col-sm-8 border border-secondary p-2">
                 <div>
                     <h3 class="panel-title">
                         Current Train
@@ -84,7 +84,9 @@
 
                 </table>
             </div>
-        </div>
+        
+
+    </div>
     </div>
 
 </body>
